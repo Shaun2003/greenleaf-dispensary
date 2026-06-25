@@ -24,6 +24,7 @@ export interface User {
   id: string;
   email: string;
   name: string;
+  password?: string; // For authentication (stored server-side)
   role: 'admin' | 'customer';
   status: 'active' | 'blocked';
   addresses?: string[];
