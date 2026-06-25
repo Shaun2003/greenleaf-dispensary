@@ -17,7 +17,23 @@ A premium, state-licensed cannabis eCommerce platform featuring age verification
 
 ---
 
-## 🚀 Quick Start
+## � Screenshots
+
+### Age Verification Gate
+<img width="100%" alt="Age Gate" src="./docs/images/01-agegate.png" />
+
+### Product Shopping & Filtering
+<img width="100%" alt="Shop with Filters" src="./docs/images/02-shop.png" />
+
+### Product Details & Information
+<img width="100%" alt="Product Details" src="./docs/images/03-product-details.png" />
+
+### Admin Dashboard
+<img width="100%" alt="Admin Dashboard" src="./docs/images/04-admin-dashboard.png" />
+
+---
+
+## �🚀 Quick Start
 
 **Prerequisites:** Node.js 18+
 
