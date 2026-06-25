@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TrendingUp, ShoppingBag, AlertTriangle, CheckCircle, RotateCcw } from 'lucide-react';
 import { Product, Order } from '../types';
 
@@ -10,7 +10,7 @@ interface AdminOverviewProps {
   onAddPromo: (code: string, discount: number) => void;
   onRemovePromo: (code: string) => void;
   homepageBanner: string;
-  onUpdateBanner: (text: string) => void;
+  onUpdateBanner: (text: string) => Promise<boolean>;
 }
 
 export default function AdminOverview({
@@ -27,6 +27,10 @@ export default function AdminOverview({
   const [newPromoDiscount, setNewPromoDiscount] = useState('10');
   const [bannerInput, setBannerInput] = useState(homepageBanner);
   const [bannerSuccess, setBannerSuccess] = useState(false);
+
+  useEffect(() => {
+    setBannerInput(homepageBanner);
+  }, [homepageBanner]);
 
   // Compute stats
   const totalSales = orders.reduce((acc, o) => acc + o.total, 0);
@@ -52,11 +56,13 @@ export default function AdminOverview({
   }
   const maxRev = Math.max(...dates.map((d) => dailyRevMap[d] || 0), 100);
 
-  const handleUpdateBannerSubmit = (e: React.FormEvent) => {
+  const handleUpdateBannerSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onUpdateBanner(bannerInput);
-    setBannerSuccess(true);
-    setTimeout(() => setBannerSuccess(false), 2000);
+    const success = await onUpdateBanner(bannerInput);
+    if (success) {
+      setBannerSuccess(true);
+      setTimeout(() => setBannerSuccess(false), 2000);
+    }
   };
 
   const handleAddPromoSubmit = (e: React.FormEvent) => {

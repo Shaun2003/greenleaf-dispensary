@@ -286,6 +286,8 @@ export default function App() {
         setHomepageBanner(data.banner);
         return true;
       }
+      const errorData = await r.json().catch(() => null);
+      console.error('Banner update failed:', r.status, errorData);
     } catch (e) {
       console.error('Error updating banner:', e);
     }
@@ -621,10 +623,18 @@ export default function App() {
         headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
         body: JSON.stringify(payload),
       });
-      if (res.ok) fetchProducts();
+      if (res.ok) {
+        const updatedProduct: Product = await res.json();
+        setProducts((current) => current.map((p) => (p.id === id ? updatedProduct : p)));
+        if (selectedProduct?.id === id) {
+          setSelectedProduct(updatedProduct);
+        }
+        return true;
+      }
     } catch (e) {
       console.error(e);
     }
+    return false;
   };
 
   const handleDeleteProduct = async (id: string) => {
