@@ -20,20 +20,26 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Lazy-loaded Gemini AI client
 let aiInstance: GoogleGenAI | null = null;
-function getGeminiClient(): GoogleGenAI {
+function getGeminiClient(): GoogleGenAI | null {
   if (!aiInstance) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error('GEMINI_API_KEY environment variable is required for AI recommendations. Please configure it in your Secrets panel.');
+      console.warn('GEMINI_API_KEY not set - AI recommendations will use fallback system');
+      return null;
     }
-    aiInstance = new GoogleGenAI({
-      apiKey,
-      httpOptions: {
-        headers: {
-          'User-Agent': 'aistudio-build',
+    try {
+      aiInstance = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          },
         },
-      },
-    });
+      });
+    } catch (err) {
+      console.error('Failed to initialize Gemini client:', err);
+      return null;
+    }
   }
   return aiInstance;
 }
@@ -1148,18 +1154,20 @@ app.post('/api/recommendations', async (req, res) => {
     }
   }
 
-  try {
-    const ai = getGeminiClient();
+  // Try to use Gemini AI first
+  const ai = getGeminiClient();
+  
+  if (ai) {
+    try {
+      // Construct a beautiful rich system instruction describing GreenLeaf catalog and our requested mood/details
+      const catalogString = productsList
+        .map(
+          (p) =>
+            `ID: "${p.id}", Name: "${p.name}", Category: "${p.category}", Strain Type: "${p.strainType}", Price: $${p.price}, THC: ${p.thcPercent}%, CBD: ${p.cbdPercent}%, Effects: [${p.effects.join(', ')}], Description: "${p.description}"`
+        )
+        .join('\n');
 
-    // Construct a beautiful rich system instruction describing GreenLeaf catalog and our requested mood/details
-    const catalogString = productsList
-      .map(
-        (p) =>
-          `ID: "${p.id}", Name: "${p.name}", Category: "${p.category}", Strain Type: "${p.strainType}", Price: $${p.price}, THC: ${p.thcPercent}%, CBD: ${p.cbdPercent}%, Effects: [${p.effects.join(', ')}], Description: "${p.description}"`
-      )
-      .join('\n');
-
-    const systemPrompt = `You are an expert Cannabis Strain Sommelier at "GreenLeaf Dispensary", a premium, fully legal medical and adult-use dispensary.
+      const systemPrompt = `You are an expert Cannabis Strain Sommelier at "GreenLeaf Dispensary", a premium, fully legal medical and adult-use dispensary.
 Your goal is to suggest the absolute best cannabis products from our active dispensary catalog to match the user's specific state of mind, mood, or medical need.
 
 Active catalog:
@@ -1176,69 +1184,124 @@ Your response MUST be a valid JSON array of recommendation objects with this exa
 [
   {
     "productId": "id-of-matching-product",
-    "score": 95, // matching percentage score out of 100
-    "headline": "A catchy, short sommelier title for this pairing (e.g., 'Perfect Twilight Companion' or 'Daytime Spark')",
-    "explanation": "A professional, warm, descriptive paragraph explaining exactly why this specific strain, its THC/CBD ratio, and its terpene/effects profile match their desired mood: '${mood}' and request: '${details}'."
+    "score": 95,
+    "headline": "A catchy, short sommelier title for this pairing",
+    "explanation": "A professional, warm, descriptive paragraph explaining exactly why this specific strain matches their desired mood."
   }
 ]
 
-CRITICAL: Return ONLY the JSON array. Do not wrap in markdown \`\`\`json blocks. Do not add any conversational text outside the JSON array. Must be directly JSON parsable.`;
+CRITICAL: Return ONLY the JSON array. Do not wrap in markdown blocks. Must be directly JSON parsable.`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
-      contents: systemPrompt,
-      config: {
-        responseMimeType: 'application/json',
-      },
-    });
-
-    let cleanText = response.text || '[]';
-    // Clean potential codeblocks if returned despite instructions
-    if (cleanText.includes('```json')) {
-      cleanText = cleanText.split('```json')[1].split('```')[0].trim();
-    } else if (cleanText.includes('```')) {
-      cleanText = cleanText.split('```')[1].split('```')[0].trim();
-    }
-
-    const recommendations = JSON.parse(cleanText);
-    res.json(recommendations);
-  } catch (error: any) {
-    console.error('Gemini Recommendation Error:', error);
-    // Graceful fallback if Gemini API Key is missing or request fails
-    const localRecommendations = [];
-    const normalizedMood = mood.toLowerCase();
-
-    let matchedProducts = [...productsList];
-    if (filterCategory) {
-      matchedProducts = matchedProducts.filter(p => p.category === filterCategory);
-    }
-
-    if (normalizedMood.includes('sleep') || normalizedMood.includes('relax')) {
-      // Prefer Indica / CBD
-      const indicas = matchedProducts.filter(p => p.strainType === 'Indica' || p.strainType === 'CBD' || p.strainType === 'Hybrid');
-      indicas.slice(0, 2).forEach(p => {
-        localRecommendations.push({
-          productId: p.id,
-          score: 90,
-          headline: 'Tranquil Evening Harmony',
-          explanation: `We recommend ${p.name} as a local fallback choice. Its dominant Indica/CBD profile matches your need to wind down, offering muscle-soothing terpenes and anxiety relief.`,
-        });
+      const response = await ai.models.generateContent({
+        model: 'gemini-3.5-flash',
+        contents: systemPrompt,
+        config: {
+          responseMimeType: 'application/json',
+        },
       });
-    } else {
-      // Sativa / Hybrid
-      const sativas = matchedProducts.filter(p => p.strainType === 'Sativa' || p.strainType === 'Hybrid');
-      sativas.slice(0, 2).forEach(p => {
-        localRecommendations.push({
-          productId: p.id,
-          score: 88,
-          headline: 'Revitalizing Energy Wave',
-          explanation: `${p.name} is selected for you. Its active cannabinoids provide clear, uplifting energy and physical lightness to boost focus, social interaction, or creative flow.`,
-        });
-      });
-    }
 
-    res.json(localRecommendations.slice(0, 2));
+      let cleanText = response.text || '[]';
+      // Clean potential codeblocks if returned despite instructions
+      if (cleanText.includes('```json')) {
+        cleanText = cleanText.split('```json')[1].split('```')[0].trim();
+      } else if (cleanText.includes('```')) {
+        cleanText = cleanText.split('```')[1].split('```')[0].trim();
+      }
+
+      const recommendations = JSON.parse(cleanText);
+      return res.json(recommendations);
+    } catch (error: any) {
+      console.error('Gemini Recommendation Error:', error);
+      // Fall through to local recommendations below
+    }
+  } else {
+    console.log('Gemini AI not available - using local recommendation system');
   }
+
+  // Fallback: Local recommendations without Gemini
+  const localRecommendations = [];
+  const normalizedMood = mood.toLowerCase();
+
+  let matchedProducts = [...productsList];
+  if (filterCategory) {
+    matchedProducts = matchedProducts.filter(p => p.category === filterCategory);
+  }
+
+  // Smart mood-based filtering
+  const sleepKeywords = ['sleep', 'insomnia', 'rest', 'tired', 'fatigue', 'relax', 'calm', 'stress', 'anxiety'];
+  const energyKeywords = ['energy', 'focus', 'productive', 'work', 'creative', 'social', 'active', 'alert', 'awake'];
+  const painKeywords = ['pain', 'ache', 'relief', 'muscle', 'inflammation', 'medical'];
+
+  const isSleepMood = sleepKeywords.some(kw => normalizedMood.includes(kw));
+  const isEnergyMood = energyKeywords.some(kw => normalizedMood.includes(kw));
+  const isPainMood = painKeywords.some(kw => normalizedMood.includes(kw));
+
+  let recommendedProducts = [];
+
+  if (isSleepMood) {
+    // Prefer Indica and high CBD
+    recommendedProducts = matchedProducts.filter(p => 
+      p.strainType === 'Indica' || 
+      (p.strainType === 'Hybrid' && p.cbdPercent > 0.5) ||
+      (p.strainType === 'CBD')
+    ).slice(0, 3);
+  } else if (isEnergyMood) {
+    // Prefer Sativa and higher THC
+    recommendedProducts = matchedProducts.filter(p => 
+      p.strainType === 'Sativa' || 
+      (p.strainType === 'Hybrid' && p.thcPercent > 18)
+    ).slice(0, 3);
+  } else if (isPainMood) {
+    // Prefer balanced strains or high CBD
+    recommendedProducts = matchedProducts.filter(p => 
+      p.strainType === 'Indica' || 
+      p.strainType === 'Hybrid' ||
+      p.cbdPercent > 0.5
+    ).slice(0, 3);
+  } else {
+    // Default: balanced recommendation
+    recommendedProducts = matchedProducts.slice(0, 3);
+  }
+
+  // Build recommendation objects
+  recommendedProducts.forEach((p, index) => {
+    const score = 85 - (index * 5); // Decrease score for each recommendation
+    let headline = 'Recommended Strain';
+    let explanation = `${p.name} is available at GreenLeaf Dispensary. `;
+
+    if (isSleepMood) {
+      headline = index === 0 ? 'Your Evening Sanctuary' : 'A Peaceful Alternative';
+      explanation += `With its ${p.strainType} profile and ${p.cbdPercent}% CBD, this strain is ideal for relaxation and quality rest.`;
+    } else if (isEnergyMood) {
+      headline = index === 0 ? 'Your Energy Boost' : 'A Productive Choice';
+      explanation += `With its ${p.strainType} profile and ${p.thcPercent}% THC, this strain offers uplifting effects perfect for focus and creativity.`;
+    } else if (isPainMood) {
+      headline = index === 0 ? 'Your Relief Companion' : 'A Soothing Option';
+      explanation += `With its ${p.strainType} profile and balanced cannabinoids, this strain is excellent for managing discomfort and inflammation.`;
+    } else {
+      explanation += `This ${p.strainType} strain brings ${p.effects.slice(0, 2).join(' and ')} effects that may suit your mood.`;
+    }
+
+    localRecommendations.push({
+      productId: p.id,
+      score,
+      headline,
+      explanation: explanation + ` Brand: ${p.brand} | Price: $${p.price}`,
+    });
+  });
+
+  // If no products matched, return a generic recommendation
+  if (localRecommendations.length === 0 && matchedProducts.length === 0 && productsList.length > 0) {
+    const fallback = productsList[0];
+    localRecommendations.push({
+      productId: fallback.id,
+      score: 75,
+      headline: 'Featured Selection',
+      explanation: `${fallback.name} from ${fallback.brand} is a great starting point for your wellness journey at GreenLeaf Dispensary.`,
+    });
+  }
+
+  res.json(localRecommendations.slice(0, 3));
 });
 
 // CMS Banner endpoints (must be before Vite middleware)
