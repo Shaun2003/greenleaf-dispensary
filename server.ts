@@ -510,9 +510,9 @@ app.post('/api/auth/login', async (req, res) => {
     return res.status(403).json({ error: 'Your account has been blocked. Please contact support.' });
   }
 
-  // ALWAYS verify password (no exceptions for admin)
-  const expectedPassword = (user as any).password || (user.role === 'admin' ? 'admin123' : 'user123');
-  if (password !== expectedPassword) {
+  // ALWAYS verify password
+  const expectedPassword = (user as any).password;
+  if (!expectedPassword || password !== expectedPassword) {
     return res.status(401).json({ error: 'Invalid email or password' });
   }
 
