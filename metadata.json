@@ -1,0 +1,6 @@
+{
+  "name": "GreenLeaf Dispensary",
+  "description": "A premium, legal cannabis eCommerce platform featuring age verification, specialized categories (Flower, Edibles, Concentrates, Vapes, CBD Wellness), shopping cart, educational guides, AI Strain Sommelier, and a comprehensive admin management system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

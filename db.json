@@ -1,0 +1,425 @@
+{
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Blue Dream Sativa Hybrid",
+      "brand": "WestCoast Organics",
+      "strainType": "Hybrid",
+      "category": "Flower",
+      "price": 45,
+      "thcPercent": 18.5,
+      "cbdPercent": 0.1,
+      "stock": 24,
+      "rating": 4.8,
+      "reviewsCount": 3,
+      "image": "https://images.unsplash.com/photo-1536882240095-0379873feb4e?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Uplifting",
+        "Creative",
+        "Relaxing"
+      ],
+      "description": "A legendary West Coast strain, Blue Dream is a sativa-dominant hybrid featuring sweet berry aromas and a gentle, uplifting cerebral high coupled with smooth physical relaxation.",
+      "labResultsDoc": "THC: 18.5% | CBD: 0.1% | Terpenes: Myrcene, Pinene | Pesticides: None Detected | Heavy Metals: Passed"
+    },
+    {
+      "id": "prod-2",
+      "name": "Sour Diesel Premium",
+      "brand": "Apex Farms",
+      "strainType": "Sativa",
+      "category": "Flower",
+      "price": 50,
+      "thcPercent": 22.1,
+      "cbdPercent": 0.2,
+      "stock": 15,
+      "rating": 4.7,
+      "reviewsCount": 2,
+      "image": "https://images.unsplash.com/photo-1603909223429-69bb7101f420?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Energizing",
+        "Focus",
+        "Happy"
+      ],
+      "description": "Fast-acting and energizing, Sour Diesel features a pungent, diesel-like aroma profile. Ideal for daytime relief, productivity, and fighting fatigue.",
+      "labResultsDoc": "THC: 22.1% | CBD: 0.2% | Terpenes: Limonene, Caryophyllene | Pesticides: Passed | Heavy Metals: Passed"
+    },
+    {
+      "id": "prod-3",
+      "name": "Granddaddy Purple",
+      "brand": "Sol Indicas",
+      "strainType": "Indica",
+      "category": "Flower",
+      "price": 48,
+      "thcPercent": 20.2,
+      "cbdPercent": 0.5,
+      "stock": 8,
+      "rating": 4.9,
+      "reviewsCount": 4,
+      "image": "https://images.unsplash.com/photo-1556922443-41f6ca5f04cb?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Relaxing",
+        "Sleepy",
+        "Pain Relief"
+      ],
+      "description": "A famous pure Indica strain cross of Mendo Purps and Skunk. Delivers a potent fusion of cerebral euphoria and deep physical relaxation, perfect for combatting insomnia and chronic pain.",
+      "labResultsDoc": "THC: 20.2% | CBD: 0.5% | Terpenes: Linalool, Myrcene | Pesticides: None Detected | Heavy Metals: Passed"
+    },
+    {
+      "id": "prod-4",
+      "name": "Wedding Cake Indica Hybrid",
+      "brand": "Apex Farms",
+      "strainType": "Hybrid",
+      "category": "Flower",
+      "price": 52,
+      "thcPercent": 24.3,
+      "cbdPercent": 0.1,
+      "stock": 3,
+      "rating": 4.6,
+      "reviewsCount": 1,
+      "image": "https://images.unsplash.com/photo-1568444438385-ecef1a33b54f?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Relaxing",
+        "Happy",
+        "Euphoric"
+      ],
+      "description": "Also known as Pink Cookies, Wedding Cake is a potent indica-dominant hybrid providing rich tangy flavors with earthy pepper undertones and a powerful full-body state.",
+      "labResultsDoc": "THC: 24.3% | CBD: 0.1% | Terpenes: Limonene, Caryophyllene | Pesticides: Passed | Heavy Metals: Passed"
+    },
+    {
+      "id": "prod-5",
+      "name": "Sour Strawberry Gummies (100mg)",
+      "brand": "Infusion Co",
+      "strainType": "Hybrid",
+      "category": "Edibles",
+      "price": 22,
+      "thcPercent": 10,
+      "cbdPercent": 1,
+      "stock": 50,
+      "rating": 4.5,
+      "reviewsCount": 2,
+      "image": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Relaxing",
+        "Happy",
+        "Laughing"
+      ],
+      "description": "Infused with premium cannabis distillate, these delicious, chewable gummies are precise-dosed for a controlled, joyful experience.",
+      "labResultsDoc": "10mg THC per Gummy | 100mg package total | Solvent Residue: Passed | Microbiological: Passed"
+    },
+    {
+      "id": "prod-6",
+      "name": "Broad Spectrum Sleep Gelcaps",
+      "brand": "PureCure CBD",
+      "strainType": "CBD",
+      "category": "CBD Wellness",
+      "price": 35,
+      "thcPercent": 0.3,
+      "cbdPercent": 25,
+      "stock": 12,
+      "rating": 4.8,
+      "reviewsCount": 1,
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Sleepy",
+        "Relaxing",
+        "Pain Relief"
+      ],
+      "description": "Broad-spectrum CBD infused with melatonin, chamomile, and L-theanine to promote deep, restorative sleep without any psychoactive high.",
+      "labResultsDoc": "CBD: 25mg/softgel | THC: <0.3% | Pesticides: Passed | Heavy Metals: Passed | Microbes: Passed"
+    },
+    {
+      "id": "prod-7",
+      "name": "Pineapple Express Premium Cartridge",
+      "brand": "ZenVapes",
+      "strainType": "Sativa",
+      "category": "Vapes",
+      "price": 40,
+      "thcPercent": 82,
+      "cbdPercent": 1.5,
+      "stock": 18,
+      "rating": 4.6,
+      "reviewsCount": 2,
+      "image": "https://images.unsplash.com/photo-1556922443-c0d1645e5d3c?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Uplifting",
+        "Focus",
+        "Creative"
+      ],
+      "description": "A premium 1-gram 510-thread vape cartridge filled with pure Pineapple Express distillate. Rich in tropical terpenes for an uplifting daytime buzz.",
+      "labResultsDoc": "THC: 82.0% | CBD: 1.5% | Heavy Metals: Passed | Vitamin E Acetate: None Detected | Pesticides: Passed"
+    },
+    {
+      "id": "prod-8",
+      "name": "Golden Lemon Live Resin Badder",
+      "brand": "Apex Extracts",
+      "strainType": "Indica",
+      "category": "Concentrates",
+      "price": 60,
+      "thcPercent": 78.4,
+      "cbdPercent": 0.8,
+      "stock": 5,
+      "rating": 4.9,
+      "reviewsCount": 1,
+      "image": "https://images.unsplash.com/photo-1541256996761-85df2ef31644?q=80&w=600&auto=format&fit=crop",
+      "effects": [
+        "Euphoric",
+        "Relaxing",
+        "Sleepy"
+      ],
+      "description": "Ultra-potent concentrate extracted from fresh-frozen Golden Lemon flower. Heavy limonene terpenes produce a sweet citrusy flavor with intense physical relaxation.",
+      "labResultsDoc": "THC: 78.4% | CBD: 0.8% | Solvents: Passed | Terpenes: 6.2% total | Pesticides: Passed"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1001",
+      "userId": "user-customer",
+      "customerName": "Sean Miller",
+      "customerEmail": "user@greenleaf.com",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "Blue Dream Sativa Hybrid",
+            "brand": "WestCoast Organics",
+            "strainType": "Hybrid",
+            "category": "Flower",
+            "price": 45,
+            "thcPercent": 18.5,
+            "cbdPercent": 0.1,
+            "stock": 24,
+            "rating": 4.8,
+            "reviewsCount": 3,
+            "image": "https://images.unsplash.com/photo-1536882240095-0379873feb4e?q=80&w=600&auto=format&fit=crop",
+            "effects": [
+              "Uplifting",
+              "Creative",
+              "Relaxing"
+            ],
+            "description": "A legendary West Coast strain, Blue Dream is a sativa-dominant hybrid featuring sweet berry aromas and a gentle, uplifting cerebral high coupled with smooth physical relaxation.",
+            "labResultsDoc": "THC: 18.5% | CBD: 0.1% | Terpenes: Myrcene, Pinene | Pesticides: None Detected | Heavy Metals: Passed"
+          },
+          "quantity": 2
+        },
+        {
+          "product": {
+            "id": "prod-5",
+            "name": "Sour Strawberry Gummies (100mg)",
+            "brand": "Infusion Co",
+            "strainType": "Hybrid",
+            "category": "Edibles",
+            "price": 22,
+            "thcPercent": 10,
+            "cbdPercent": 1,
+            "stock": 50,
+            "rating": 4.5,
+            "reviewsCount": 2,
+            "image": "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=600&auto=format&fit=crop",
+            "effects": [
+              "Relaxing",
+              "Happy",
+              "Laughing"
+            ],
+            "description": "Infused with premium cannabis distillate, these delicious, chewable gummies are precise-dosed for a controlled, joyful experience.",
+            "labResultsDoc": "10mg THC per Gummy | 100mg package total | Solvent Residue: Passed | Microbiological: Passed"
+          },
+          "quantity": 1
+        }
+      ],
+      "total": 112,
+      "status": "Delivered",
+      "date": "2026-06-18T15:20:00Z",
+      "address": "710 Green Ave, Los Angeles, CA",
+      "deliveryOption": "delivery",
+      "promoApplied": "WELCOME10"
+    },
+    {
+      "id": "ord-1002",
+      "userId": "user-customer",
+      "customerName": "Sean Miller",
+      "customerEmail": "user@greenleaf.com",
+      "items": [
+        {
+          "product": {
+            "id": "prod-3",
+            "name": "Granddaddy Purple",
+            "brand": "Sol Indicas",
+            "strainType": "Indica",
+            "category": "Flower",
+            "price": 48,
+            "thcPercent": 20.2,
+            "cbdPercent": 0.5,
+            "stock": 8,
+            "rating": 4.9,
+            "reviewsCount": 4,
+            "image": "https://images.unsplash.com/photo-1556922443-41f6ca5f04cb?q=80&w=600&auto=format&fit=crop",
+            "effects": [
+              "Relaxing",
+              "Sleepy",
+              "Pain Relief"
+            ],
+            "description": "A famous pure Indica strain cross of Mendo Purps and Skunk. Delivers a potent fusion of cerebral euphoria and deep physical relaxation, perfect for combatting insomnia and chronic pain.",
+            "labResultsDoc": "THC: 20.2% | CBD: 0.5% | Terpenes: Linalool, Myrcene | Pesticides: None Detected | Heavy Metals: Passed"
+          },
+          "quantity": 1
+        },
+        {
+          "product": {
+            "id": "prod-6",
+            "name": "Broad Spectrum Sleep Gelcaps",
+            "brand": "PureCure CBD",
+            "strainType": "CBD",
+            "category": "CBD Wellness",
+            "price": 35,
+            "thcPercent": 0.3,
+            "cbdPercent": 25,
+            "stock": 12,
+            "rating": 4.8,
+            "reviewsCount": 1,
+            "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop",
+            "effects": [
+              "Sleepy",
+              "Relaxing",
+              "Pain Relief"
+            ],
+            "description": "Broad-spectrum CBD infused with melatonin, chamomile, and L-theanine to promote deep, restorative sleep without any psychoactive high.",
+            "labResultsDoc": "CBD: 25mg/softgel | THC: <0.3% | Pesticides: Passed | Heavy Metals: Passed | Microbes: Passed"
+          },
+          "quantity": 1
+        }
+      ],
+      "total": 83,
+      "status": "Processing",
+      "date": "2026-06-22T09:10:00Z",
+      "address": "710 Green Ave, Los Angeles, CA",
+      "deliveryOption": "pickup"
+    },
+    {
+      "id": "ord-1003",
+      "userId": "user-customer",
+      "customerName": "Sean Miller",
+      "customerEmail": "user@greenleaf.com",
+      "items": [
+        {
+          "product": {
+            "id": "prod-2",
+            "name": "Sour Diesel Premium",
+            "brand": "Apex Farms",
+            "strainType": "Sativa",
+            "category": "Flower",
+            "price": 50,
+            "thcPercent": 22.1,
+            "cbdPercent": 0.2,
+            "stock": 15,
+            "rating": 4.7,
+            "reviewsCount": 2,
+            "image": "https://images.unsplash.com/photo-1603909223429-69bb7101f420?q=80&w=600&auto=format&fit=crop",
+            "effects": [
+              "Energizing",
+              "Focus",
+              "Happy"
+            ],
+            "description": "Fast-acting and energizing, Sour Diesel features a pungent, diesel-like aroma profile. Ideal for daytime relief, productivity, and fighting fatigue.",
+            "labResultsDoc": "THC: 22.1% | CBD: 0.2% | Terpenes: Limonene, Caryophyllene | Pesticides: Passed | Heavy Metals: Passed"
+          },
+          "quantity": 1
+        }
+      ],
+      "total": 50,
+      "status": "Pending",
+      "date": "2026-06-23T20:45:00Z",
+      "address": "710 Green Ave, Los Angeles, CA",
+      "deliveryOption": "delivery"
+    }
+  ],
+  "users": [
+    {
+      "id": "user-admin",
+      "email": "admin@greenleaf.com",
+      "name": "Grace Leaf (Admin)",
+      "role": "admin",
+      "status": "active",
+      "addresses": [
+        "420 High St, San Francisco, CA"
+      ],
+      "createdAt": "2026-01-01T12:00:00Z"
+    },
+    {
+      "id": "user-customer",
+      "email": "user@greenleaf.com",
+      "name": "Sean Miller",
+      "role": "customer",
+      "status": "active",
+      "addresses": [
+        "710 Green Ave, Los Angeles, CA"
+      ],
+      "createdAt": "2026-02-15T14:30:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "productId": "prod-1",
+      "userName": "Sean Miller",
+      "rating": 5,
+      "comment": "Absolutely spectacular flower. Smells amazing and gives me the perfect daytime focus for creative projects without any paranoia.",
+      "date": "2026-05-10T08:30:00Z"
+    },
+    {
+      "id": "rev-2",
+      "productId": "prod-1",
+      "userName": "Jessica K.",
+      "rating": 4,
+      "comment": "Super solid sativa-dominant hybrid. Clean burn and sweet taste. Stock ran a bit low but the product itself is top notch.",
+      "date": "2026-06-01T10:15:00Z"
+    },
+    {
+      "id": "rev-3",
+      "productId": "prod-3",
+      "userName": "David T.",
+      "rating": 5,
+      "comment": "The absolute king of sleepy indicas. Knocks me out within 30 minutes, and the pain relief is unbelievable. Beautiful purple buds.",
+      "date": "2026-05-20T22:00:00Z"
+    },
+    {
+      "id": "rev-4",
+      "productId": "prod-5",
+      "userName": "Alice M.",
+      "rating": 4,
+      "comment": "Tasty strawberry flavor with no weird aftertaste. Took about an hour to kick in, which was perfect. Highly recommend!",
+      "date": "2026-06-12T19:40:00Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "art-1",
+      "title": "Understanding Terpenes: The Secret to Cannabinoid Aroma & Effects",
+      "category": "Strain Science",
+      "readTime": "5 min read",
+      "content": "Terpenes are organic, aromatic compounds found in the oils of all flowers, including cannabis. They give strains their unique aroma—like the citrusy burst of Limonene or the pine scent of Pinene—and play a critical role in the \"entourage effect,\" working synergistically with THC and CBD to shape your mental and physical experience.",
+      "date": "2026-05-15T12:00:00Z",
+      "author": "Dr. Jane Terp",
+      "image": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "id": "art-2",
+      "title": "Responsible Dosing: Edibles Safety & Timing for Beginners",
+      "category": "Responsible Use",
+      "readTime": "4 min read",
+      "content": "Edibles are highly convenient, but they behave very differently from inhalables. When ingested, THC is metabolized by your liver into 11-hydroxy-THC, which is significantly more psychoactive. It can take anywhere from 45 minutes to 2 hours to feel the full effects. The gold rule is: \"Start Low and Go Slow.\" Begin with 2.5mg or 5mg, and wait at least 2 full hours before consuming more.",
+      "date": "2026-06-10T14:20:00Z",
+      "author": "Leaf Advisor",
+      "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop"
+    },
+    {
+      "id": "art-3",
+      "title": "Indica, Sativa, or Hybrid: Breaking Down the Classic Cannabis Classifications",
+      "category": "Education",
+      "readTime": "6 min read",
+      "content": "The division of cannabis into Indica, Sativa, and Hybrid has been the primary way consumers shop for decades. Traditionally, Sativas are known as cerebral, energizing daytime strains, while Indicas are associated with soothing, deeply relaxing nighttime effects. Hybrids offer a crossbreed of both worlds. However, modern research shows the strain's full terpene and cannabinoid profile actually dictates the experience far more than simple botany classifications.",
+      "date": "2026-06-20T09:30:00Z",
+      "author": "Strain Sommelier",
+      "image": "https://images.unsplash.com/photo-1536882240095-0379873feb4e?q=80&w=600&auto=format&fit=crop"
+    }
+  ],
+  "banner": "🌟 INTRODUCING BLUE DREAM HYBRID • POTENCY TESTED 18.5% THC • 10% OFF WITH COUPON \"WELCOME10\""
+}

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --brand-bg: #F5F5F0;
+  --brand-card: #ffffff;
+  --brand-dark: #2D342F;
+  --brand-green: #4B6344;
+  --brand-green-dark: #2F3E30;
+  --brand-border: #DCDCCF;
+  --brand-tag: #E8E8DF;
+  --brand-gold: #D4AF37;
+  --brand-muted-green: #8ca68c;
+}
+
+.dark {
+  --brand-bg: #0A0F0B;
+  --brand-card: #121A14;
+  --brand-dark: #ECEFEC;
+  --brand-green: #5D8055;
+  --brand-green-dark: #789B6F;
+  --brand-border: #1F2E23;
+  --brand-tag: #17241A;
+  --brand-gold: #E5C158;
+  --brand-muted-green: #819884;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Lora", Georgia, serif;
+  --font-display: "Playfair Display", "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-card: var(--brand-card);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-dark: var(--brand-green-dark);
+  --color-brand-border: var(--brand-border);
+  --color-brand-tag: var(--brand-tag);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-muted-green: var(--brand-muted-green);
+}
+
+/* Glassmorphism custom classes, updated for warm natural tones */
+.glass {
+  background: rgba(45, 52, 47, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 220, 207, 0.2);
+}
+
+.dark .glass {
+  background: rgba(10, 15, 11, 0.95);
+  border: 1px solid rgba(31, 46, 35, 0.3);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(220, 220, 207, 0.5);
+}
+
+.dark .glass-light {
+  background: rgba(18, 26, 20, 0.8);
+  border: 1px solid rgba(31, 46, 35, 0.5);
+}
+
+/* Custom Scrollbar for modern feeling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(75, 99, 68, 0.3);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(93, 128, 85, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 99, 68, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(93, 128, 85, 0.6);
+}
+
+/* Fallback elements styling in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--brand-bg) !important;
+  border-color: var(--brand-border) !important;
+  color: var(--brand-dark) !important;
+}
+
+.dark .bg-white {
+  background-color: var(--brand-card) !important;
+}
+
+.dark .text-brand-dark {
+  color: var(--brand-dark) !important;
+}
+
+.dark .bg-\[\#E8E8DF\] {
+  background-color: var(--brand-tag) !important;
+}
+
+.dark .bg-\[\#1e251c\] {
+  background-color: #0d140e !important;
+}
+
+/* Safe Area Disclaimers styling */
+.compliance-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
