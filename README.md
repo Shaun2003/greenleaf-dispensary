@@ -1,5 +1,7 @@
 <div align="center">
-<img width="1200" height="300" alt="GreenLeaf Dispensary Banner" src="https://images.unsplash.com/photo-1612528443702-f6741f3a6f1f?w=1200&h=300&fit=crop" />
+
+![GreenLeaf Dispensary Banner](https://images.unsplash.com/photo-1612528443702-f6741f3a6f1f?w=1200&h=300&fit=crop)
+
 </div>
 
 # 🌿 GreenLeaf Dispensary
@@ -20,16 +22,16 @@ A premium, state-licensed cannabis eCommerce platform featuring age verification
 ## � Screenshots
 
 ### Age Verification Gate
-<img width="100%" alt="Age Gate" src="./docs/images/01-agegate.png" />
+![Age Gate](./docs/images/01-agegate.png)
 
 ### Product Shopping & Filtering
-<img width="100%" alt="Shop with Filters" src="./docs/images/02-shop.png" />
+![Shop with Filters](./docs/images/02-shop.png)
 
 ### Product Details & Information
-<img width="100%" alt="Product Details" src="./docs/images/03-product-details.png" />
+![Product Details](./docs/images/03-product-details.png)
 
 ### Admin Dashboard
-<img width="100%" alt="Admin Dashboard" src="./docs/images/04-admin-dashboard.png" />
+![Admin Dashboard](./docs/images/04-admin-dashboard.png)
 
 ---
 
